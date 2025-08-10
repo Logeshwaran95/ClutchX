@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+
+body {
+  @apply min-h-screen bg-gradient-to-r from-purple-500 via-blue-500 to-pink-500 bg-[length:400%_400%] ;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  animation: gradient 15s ease infinite;
+}
