@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Navbar() {
+export default function Navbar({ theme }) {
   const [open, setOpen] = useState(false);
 
+  // Lock/unlock body scroll when menu is open
   useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = open ? "hidden" : prev;
@@ -12,6 +13,7 @@ export default function Navbar() {
     };
   }, [open]);
 
+  // Close menu on ESC key
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") setOpen(false);
@@ -30,17 +32,13 @@ export default function Navbar() {
           <div
             className="
               w-full flex items-center justify-between 
-              bg-white/10 backdrop-blur-lg shadow-lg border border-white/20
-              rounded-b-xl
+              bg-white/10 backdrop-blur-lg rounded-b-xl
               px-6 py-3
             "
           >
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <div
-                className="rounded-md p-2 bg-white/20 backdrop-blur-md"
-                aria-hidden
-              >
+              <div className="rounded-md p-2 bg-white/20 backdrop-blur-md" aria-hidden>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 text-white"
@@ -64,7 +62,7 @@ export default function Navbar() {
                   {it}
                 </a>
               ))}
-              <button className="ml-4 bg-white text-black px-4 py-2 rounded-full shadow-md hover:brightness-95">
+              <button className="ml-4 bg-white text-black px-4 py-2 rounded-full hover:brightness-95">
                 Get Started
               </button>
             </div>
@@ -82,12 +80,7 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
@@ -108,13 +101,18 @@ export default function Navbar() {
               animate={{ y: 0 }}
               exit={{ y: "-100%" }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="absolute inset-0 bg-white/10 backdrop-blur-2xl border border-white/20"
+              className="absolute inset-0 backdrop-blur-2xl"
             >
+              {/* Dynamic gradient from theme */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${theme.from} ${theme.via} ${theme.to} opacity-80 -z-10`}
+              />
+
               {/* Close button */}
               <div className="flex justify-end p-4">
                 <button
                   onClick={() => setOpen(false)}
-                  className="p-2 rounded-md bg-white/10 text-white hover:bg-white/20"
+                  className="p-2 rounded-md bg-white/20 text-white hover:bg-white/30"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -123,12 +121,7 @@ export default function Navbar() {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
@@ -142,10 +135,7 @@ export default function Navbar() {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: i * 0.1 }}
                   >
-                    <a
-                      href={`#${label.toLowerCase()}`}
-                      onClick={() => setOpen(false)}
-                    >
+                    <a href={`#${label.toLowerCase()}`} onClick={() => setOpen(false)}>
                       {label}
                     </a>
                   </motion.li>
@@ -154,7 +144,7 @@ export default function Navbar() {
 
               {/* Action button */}
               <div className="flex justify-center mt-8">
-                <button className="px-6 py-3 rounded-full bg-white text-black font-medium shadow-md hover:brightness-95">
+                <button className="px-6 py-3 rounded-full bg-white text-black font-medium hover:brightness-95">
                   Get Started
                 </button>
               </div>

@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
 import ColorThemePicker from "@/components/ColorThemePicker";
 import { motion, AnimatePresence } from "framer-motion";
 import ReviewCarousel from "./components/ReviewCarousel";
@@ -17,6 +16,31 @@ function App() {
     via: "via-indigo-900",
     to: "to-black",
   });
+
+  useEffect(() => {
+    const savedColor = localStorage.getItem("selectedColor") || "#000"; // fallback
+    document.documentElement.style.backgroundColor = savedColor;
+    document.body.style.backgroundColor = savedColor;
+  }, []);
+
+  // Load theme from localStorage on mount
+  useEffect(() => {
+    const savedId = localStorage.getItem("theme");
+    if (savedId) {
+      const gradients = [
+        { id: "dark", from: "from-gray-900", via: "via-gray-800", to: "to-black" },
+        { id: "green", from: "from-green-700", via: "via-emerald-600", to: "to-green-500" },
+        { id: "blue", from: "from-blue-800", via: "via-blue-600", to: "to-cyan-500" },
+        { id: "orange", from: "from-orange-700", via: "via-orange-500", to: "to-yellow-400" },
+        { id: "purple", from: "from-purple-900", via: "via-violet-700", to: "to-fuchsia-500" },
+        { id: "red", from: "from-red-700", via: "via-red-600", to: "to-pink-500" },
+        { id: "pink", from: "from-pink-600", via: "via-pink-400", to: "to-rose-400" },
+        { id: "teal", from: "from-teal-700", via: "via-teal-500", to: "to-cyan-400" },
+      ];
+      const found = gradients.find((g) => g.id === savedId);
+      if (found) setTheme(found);
+    }
+  }, []);
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -34,16 +58,15 @@ function App() {
 
       {/* Page Content */}
       <div className="relative z-10 text-white">
-        <Navbar />
-        <HeroSection/>
-        <CategoryList/>
-        <Gallery/>
+        <Navbar theme={theme} />
+        <HeroSection />
+        <CategoryList />
+        <Gallery />
         <ColorThemePicker onThemeChange={setTheme} />
-        <ReviewCarousel/>
-         <ContactSection/>
-        <DownloadAppSection/>
-       
-           <Footer />
+        <ReviewCarousel />
+        <ContactSection />
+        <DownloadAppSection />
+        <Footer />
       </div>
     </div>
   );

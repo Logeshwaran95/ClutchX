@@ -1,16 +1,90 @@
 @import "tailwindcss";
 
-
+/* Page background & animation */
 body {
-  @apply min-h-screen bg-gradient-to-r from-purple-500 via-blue-500 to-pink-500 bg-[length:400%_400%] ;
+  @apply min-h-screen bg-gradient-to-r from-purple-500 via-blue-500 to-pink-500 bg-[length:400%_400%];
 }
 
 @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .animate-gradient {
   animation: gradient 15s ease infinite;
+}
+
+/* Always show vertical scrollbar to avoid layout shift */
+html {
+  overflow-y: scroll;
+}
+
+/* When popup opens, reserve scrollbar width so no shift */
+html.swal2-shown {
+  padding-right: var(--scrollbar-width, 0px) !important;
+}
+
+/* Base reset */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--picked-bg, #000);
+}
+
+/* SweetAlert2 styling */
+.swal2-container {
+  background: transparent !important;
+  z-index: 99999 !important;
+  overflow-x: hidden !important;
+}
+
+.swal2-backdrop-show {
+  background-color: rgba(0, 0, 0, 0.55) !important;
+}
+
+.swal2-popup.glass-popup {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.03)
+  ) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px !important;
+  color: white !important;
+  box-shadow: none !important;
+  padding: 1.25rem !important;
+  max-width: 420px;
+}
+
+.swal2-close {
+  color: #fff !important;
+  opacity: 0.95;
+  background: transparent !important;
+}
+
+/* Optional jelly animation */
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  75% {
+    transform: scale(0.97);
+  }
 }
