@@ -15,7 +15,7 @@ const appStoreBadge =
 export default function DownloadAppSection() {
   return (
     <section
-      className="max-w-7xl mx-auto px-6 py-20"
+      className="max-w-7xl mx-auto px-6 py-10"
       style={{ userSelect: "none" }}
     >
       <motion.div

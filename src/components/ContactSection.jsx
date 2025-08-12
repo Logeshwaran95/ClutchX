@@ -37,7 +37,7 @@ export default function ContactWithMap() {
   };
 
   return (
-    <section id="contact" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-16 mt-12">
+    <section id="contact" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-16 mt-0">
       {/* Section Title */}
 <div
   className="text-center mb-12"

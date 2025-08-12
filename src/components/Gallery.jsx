@@ -52,7 +52,7 @@ export default function GalleryGlass() {
   return (
     <section
       aria-label="Gaming venues gallery"
-      className="relative overflow-hidden py-16 px-4 sm:px-6 lg:px-10"
+      className="relative overflow-hidden py-16 px-4 sm:px-6 lg:px-10 mt-18"
     >
       {/* Heading */}
       <div className="mb-10 text-center" data-aos="fade-up">
