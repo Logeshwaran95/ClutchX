@@ -9,6 +9,7 @@ import HeroSection from "./components/HeroSection";
 import ContactSection from "./components/ContactSection";
 import CategoryList from "./components/Category";
 import Gallery from "./components/Gallery";
+import FlowSection from "./components/Flow";
 
 function App() {
   const [theme, setTheme] = useState({
@@ -60,6 +61,7 @@ function App() {
       <div className="relative z-10 text-white">
         <Navbar theme={theme} />
         <HeroSection />
+        <FlowSection/>
         <CategoryList />
         <Gallery />
         <ColorThemePicker onThemeChange={setTheme} />
