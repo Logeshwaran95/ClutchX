@@ -5,10 +5,20 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen flex items-center justify-center pt-16 sm:pt-20 lg:pt-28"
+      className="
+        relative
+        w-full
+        flex
+        items-center
+        justify-center
+        pt-8
+        sm:pt-12
+        lg:pt-20
+        min-h-[calc(100vh-56px)]
+        sm:min-h-[calc(100vh-64px)]
+      "
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-10 items-center">
-        
         {/* Text content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

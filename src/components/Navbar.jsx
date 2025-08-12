@@ -127,7 +127,7 @@ export default function Navbar({ theme }) {
                   marginTop: 0,
                   marginBottom: 6,
                   // Adjust height to your link height (py-1 + font-size)
-                  height: "2.3rem",
+                  height: "2.2rem",
                 }}
               />
 
