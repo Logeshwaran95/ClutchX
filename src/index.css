@@ -17,6 +17,11 @@ body {
   }
 }
 
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Adjust based on your navbar height */
+}
+
 .animate-gradient {
   animation: gradient 15s ease infinite;
 }

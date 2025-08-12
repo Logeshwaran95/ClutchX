@@ -5,7 +5,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen flex items-center justify-center pt-24 sm:pt-28 lg:pt-32"
+      className="relative w-full min-h-screen flex items-center justify-center pt-16 sm:pt-20 lg:pt-28"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-10 items-center">
         
