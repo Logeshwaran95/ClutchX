@@ -19,12 +19,11 @@ function App() {
   });
 
   useEffect(() => {
-    const savedColor = localStorage.getItem("selectedColor") || "#000"; // fallback
+    const savedColor = localStorage.getItem("selectedColor") || "#000";
     document.documentElement.style.backgroundColor = savedColor;
     document.body.style.backgroundColor = savedColor;
   }, []);
 
-  // Load theme from localStorage on mount
   useEffect(() => {
     const savedId = localStorage.getItem("theme");
     if (savedId) {
@@ -44,8 +43,8 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* Color Sweep Background */}
+<div className="relative min-h-screen overflow-hidden scroll-smooth [scroll-padding-top:5rem]">
+      {/* Background */}
       <AnimatePresence mode="wait">
         <motion.div
           key={`${theme.from}-${theme.via}-${theme.to}`}
@@ -57,17 +56,17 @@ function App() {
         />
       </AnimatePresence>
 
-      {/* Page Content */}
+      {/* Content */}
       <div className="relative z-10 text-white">
         <Navbar theme={theme} />
-        <HeroSection />
-        <FlowSection/>
-        <CategoryList />
-        <Gallery />
+        <section id="home"><HeroSection /></section>
+        <section id="features"><FlowSection /></section>
+        <section id="categories"><CategoryList /></section>
+        <section id="gallery"><Gallery /></section>
         <ColorThemePicker onThemeChange={setTheme} />
-        <ReviewCarousel />
-        <ContactSection />
-        <DownloadAppSection />
+        <section id="reviews"><ReviewCarousel /></section>
+        <section id="contact"><ContactSection /></section>
+        <section id="download"><DownloadAppSection /></section>
         <Footer />
       </div>
     </div>
