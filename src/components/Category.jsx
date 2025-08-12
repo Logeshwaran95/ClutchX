@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {
   FaGamepad, FaDesktop, FaVrCardboard, FaChessBoard, FaFutbol,
   FaFilm, FaBomb, FaPaintBrush, FaCrosshairs, FaDoorOpen,
@@ -26,11 +28,16 @@ const categories = [
 export default function CategoryList() {
   const [selected, setSelected] = useState(null);
 
+  React.useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
   return (
     <section
       aria-label="Gaming categories"
       className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 pt-20"
     >
+      {/* Background */}
       <div
         className="absolute inset-0 bg-gradient-to-br from-purple-900/70 via-indigo-900/70 to-black/70 bg-fixed"
         style={{
@@ -42,11 +49,21 @@ export default function CategoryList() {
         }}
       ></div>
 
-      <h3 className="text-center text-white text-3xl sm:text-4xl font-extrabold mb-12 tracking-wider uppercase drop-shadow-lg">
-        Explore Categories
-      </h3>
+      {/* Title */}
+      <div data-aos="fade-up" className="text-center mb-12">
+        <h3 className="text-white text-3xl sm:text-4xl font-extrabold tracking-wider uppercase drop-shadow-lg">
+          Explore Categories
+        </h3>
+        <p className="text-white/80 text-sm sm:text-base mt-3">
+          Discover endless ways to play, compete, and bond — ClutchX style.
+        </p>
+      </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 w-full max-w-7xl">
+      {/* Categories Grid */}
+      <div
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 w-full max-w-7xl"
+        data-aos="fade-up"
+      >
         {categories.map(({ name, icon: Icon, desc }) => (
           <button
             key={name}
@@ -74,55 +91,54 @@ export default function CategoryList() {
               onClick={() => setSelected(null)}
             />
 
-           {/* Popup content */}
-<motion.div
-  className="fixed inset-0 flex items-center justify-center z-50 p-4"
-  initial={{ scale: 0.7, opacity: 0 }}
-  animate={{
-    scale: [0.7, 1.05, 0.95, 1],
-    opacity: 1
-  }}
-  exit={{ scale: 0.7, opacity: 0 }}
-  transition={{
-    duration: 0.6,
-    ease: "easeOut"
-  }}
->
-  <div
-    className="glass-popup relative w-full max-w-md text-center border-2 border-white/25 rounded-2xl p-6"
-    style={{
-      boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
-      backdropFilter: "blur(20px)",
-      background: "rgba(255,255,255,0.06)"
-    }}
-  >
-    {/* Close button */}
-    <button
-      onClick={() => setSelected(null)}
-      className="absolute top-3 right-3 text-white text-lg bg-transparent hover:scale-110 transition-transform"
-    >
-      ✕
-    </button>
+            {/* Popup content */}
+            <motion.div
+              className="fixed inset-0 flex items-center justify-center z-50 p-4"
+              initial={{ scale: 0.7, opacity: 0 }}
+              animate={{
+                scale: [0.7, 1.05, 0.95, 1],
+                opacity: 1
+              }}
+              exit={{ scale: 0.7, opacity: 0 }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut"
+              }}
+            >
+              <div
+                className="glass-popup relative w-full max-w-md text-center border-2 border-white/25 rounded-2xl p-6"
+                style={{
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+                  backdropFilter: "blur(20px)",
+                  background: "rgba(255,255,255,0.06)"
+                }}
+              >
+                {/* Close button */}
+                <button
+                  onClick={() => setSelected(null)}
+                  className="absolute top-3 right-3 text-white text-lg bg-transparent hover:scale-110 transition-transform"
+                >
+                  ✕
+                </button>
 
-    {/* Icon */}
-    <div
-      className="w-20 h-20 rounded-xl flex items-center justify-center mx-auto mb-4 border border-white/20"
-      style={{
-        background: "linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
-        backdropFilter: "blur(6px)",
-      }}
-    >
-      <selected.icon size={56} color="white" />
-    </div>
+                {/* Icon */}
+                <div
+                  className="w-20 h-20 rounded-xl flex items-center justify-center mx-auto mb-4 border border-white/20"
+                  style={{
+                    background: "linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
+                    backdropFilter: "blur(6px)",
+                  }}
+                >
+                  <selected.icon size={56} color="white" />
+                </div>
 
-    {/* Title */}
-    <h3 className="text-xl font-bold mb-3">{selected.name}</h3>
+                {/* Title */}
+                <h3 className="text-xl font-bold mb-3">{selected.name}</h3>
 
-    {/* Description */}
-    <p className="text-white/90 text-base">{selected.desc}</p>
-  </div>
-</motion.div>
-
+                {/* Description */}
+                <p className="text-white/90 text-base">{selected.desc}</p>
+              </div>
+            </motion.div>
           </>
         )}
       </AnimatePresence>

@@ -8,7 +8,7 @@ const steps = [
     title: "Book Your Spot",
     description:
       "Choose your favorite gaming venue and secure your time slot instantly. No hassle, no waiting.",
-    img: "https://images.unsplash.com/photo-1605902711622-cfb43c443f3d?auto=format&fit=crop&w=1000&q=80",
+    img: "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=1000&q=80",
   },
   {
     title: "Connect with Players",
@@ -44,7 +44,7 @@ export default function FlowSection() {
           >
             {/* Image */}
             <div className="relative w-full md:w-1/2 flex justify-center">
-              <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-[400px] lg:h-[400px] rounded-2xl overflow-hidden border border-white/20 shadow-lg">
+              <div className="relative w-72 h-52 sm:w-80 sm:h-56 lg:w-[420px] lg:h-[300px] rounded-xl overflow-hidden border border-white/20 shadow-lg">
                 <img
                   src={step.img}
                   alt={step.title}
