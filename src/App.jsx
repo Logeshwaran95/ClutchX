@@ -12,11 +12,73 @@ import Gallery from "./components/Gallery";
 import FlowSection from "./components/Flow";
 
 function App() {
-  const [theme, setTheme] = useState({
-    from: "from-purple-900",
-    via: "via-indigo-900",
+  const gradients = [
+  {
+    id: "dark",
+    from: "from-gray-900",
+    via: "via-gray-800",
     to: "to-black",
-  });
+  },
+  {
+    id: "pink",
+    from: "from-pink-600",
+    via: "via-pink-400",
+    to: "to-rose-400",
+  },
+  {
+    id: "multi",
+    from: "from-purple-700",
+    via: "via-pink-500",
+    to: "to-yellow-400",
+  },
+
+  // 7 new gradients
+  {
+    id: "blue-cyan",
+    from: "from-blue-800",
+    via: "via-cyan-600",
+    to: "to-cyan-400",
+  },
+  {
+    id: "emerald-green",
+    from: "from-emerald-700",
+    via: "via-green-500",
+    to: "to-lime-400",
+  },
+  {
+    id: "orange-sunset",
+    from: "from-orange-700",
+    via: "via-red-500",
+    to: "to-yellow-400",
+  },
+  {
+    id: "violet-fuchsia",
+    from: "from-violet-800",
+    via: "via-fuchsia-600",
+    to: "to-pink-400",
+  },
+  {
+    id: "teal-aqua",
+    from: "from-teal-700",
+    via: "via-cyan-500",
+    to: "to-sky-400",
+  },
+  {
+    id: "lavender-pink",
+    from: "from-purple-600",
+    via: "via-pink-400",
+    to: "to-rose-300",
+  },
+  {
+    id: "red-rose",
+    from: "from-red-700",
+    via: "via-pink-500",
+    to: "to-rose-400",
+  },
+];
+
+
+  const [theme, setTheme] = useState(gradients[0]);
 
   useEffect(() => {
     const savedColor = localStorage.getItem("selectedColor") || "#000";
@@ -27,23 +89,13 @@ function App() {
   useEffect(() => {
     const savedId = localStorage.getItem("theme");
     if (savedId) {
-      const gradients = [
-        { id: "dark", from: "from-gray-900", via: "via-gray-800", to: "to-black" },
-        { id: "green", from: "from-green-700", via: "via-emerald-600", to: "to-green-500" },
-        { id: "blue", from: "from-blue-800", via: "via-blue-600", to: "to-cyan-500" },
-        { id: "orange", from: "from-orange-700", via: "via-orange-500", to: "to-yellow-400" },
-        { id: "purple", from: "from-purple-900", via: "via-violet-700", to: "to-fuchsia-500" },
-        { id: "red", from: "from-red-700", via: "via-red-600", to: "to-pink-500" },
-        { id: "pink", from: "from-pink-600", via: "via-pink-400", to: "to-rose-400" },
-        { id: "teal", from: "from-teal-700", via: "via-teal-500", to: "to-cyan-400" },
-      ];
       const found = gradients.find((g) => g.id === savedId);
       if (found) setTheme(found);
     }
   }, []);
 
   return (
-<div className="relative min-h-screen overflow-hidden scroll-smooth [scroll-padding-top:5rem]">
+    <div className="relative min-h-screen overflow-hidden scroll-smooth [scroll-padding-top:5rem]">
       {/* Background */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -59,14 +111,28 @@ function App() {
       {/* Content */}
       <div className="relative z-10 text-white">
         <Navbar theme={theme} />
-        <section id="home"><HeroSection /></section>
-        <section id="features"><FlowSection /></section>
-        <section id="categories"><CategoryList /></section>
-        <section id="gallery"><Gallery /></section>
-        <ColorThemePicker onThemeChange={setTheme} />
-        <section id="reviews"><ReviewCarousel /></section>
-        <section id="contact"><ContactSection /></section>
-        <section id="download"><DownloadAppSection /></section>
+        <section id="home">
+          <HeroSection />
+        </section>
+        <section id="features">
+          <FlowSection />
+        </section>
+        <section id="categories">
+          <CategoryList />
+        </section>
+        <section id="gallery">
+          <Gallery />
+        </section>
+        <ColorThemePicker onThemeChange={setTheme} gradients={gradients} />
+        <section id="reviews">
+          <ReviewCarousel />
+        </section>
+        <section id="contact">
+          <ContactSection />
+        </section>
+        <section id="download">
+          <DownloadAppSection />
+        </section>
         <Footer />
       </div>
     </div>

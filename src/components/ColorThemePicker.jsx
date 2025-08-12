@@ -2,18 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Paintbrush } from "lucide-react";
 
-const gradients = [
-  { id: "dark", from: "from-gray-900", via: "via-gray-800", to: "to-black" },
-  { id: "green", from: "from-green-700", via: "via-emerald-600", to: "to-green-500" },
-  { id: "blue", from: "from-blue-800", via: "via-blue-600", to: "to-cyan-500" },
-  { id: "orange", from: "from-orange-700", via: "via-orange-500", to: "to-yellow-400" },
-  { id: "purple", from: "from-purple-900", via: "via-violet-700", to: "to-fuchsia-500" },
-  { id: "red", from: "from-red-700", via: "via-red-600", to: "to-pink-500" },
-  { id: "pink", from: "from-pink-600", via: "via-pink-400", to: "to-rose-400" },
-  { id: "teal", from: "from-teal-700", via: "via-teal-500", to: "to-cyan-400" },
-];
-
-export default function ColorThemePicker({ onThemeChange }) {
+export default function ColorThemePicker({ onThemeChange, gradients }) {
   const [open, setOpen] = useState(false);
   const [activeTheme, setActiveTheme] = useState("default");
 
@@ -24,7 +13,7 @@ export default function ColorThemePicker({ onThemeChange }) {
       const themeObj = gradients.find((g) => g.id === savedTheme);
       if (themeObj) onThemeChange(themeObj);
     }
-  }, [onThemeChange]);
+  }, [onThemeChange, gradients]);
 
   const handleThemeSelect = (theme) => {
     setActiveTheme(theme.id);
@@ -39,6 +28,7 @@ export default function ColorThemePicker({ onThemeChange }) {
         className="p-4 rounded-full bg-white/20 backdrop-blur-lg hover:scale-110 transition"
         onClick={() => setOpen(!open)}
         whileTap={{ scale: 0.9 }}
+        aria-label="Toggle color theme picker"
       >
         <Paintbrush className="text-white" size={24} />
       </motion.button>
@@ -62,6 +52,7 @@ export default function ColorThemePicker({ onThemeChange }) {
                   onClick={() => handleThemeSelect(g)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label={`Select ${g.id} theme`}
                 />
               ))}
             </div>

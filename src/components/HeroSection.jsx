@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import {ReactTyped} from "react-typed";
 
 export default function HeroSection() {
   return (
@@ -27,7 +28,14 @@ export default function HeroSection() {
           className="text-center lg:text-left order-1 lg:order-1"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-lg">
-            Level Up Your Gaming Experience
+            Level Up Your{" "}
+            <ReactTyped
+              strings={["Gaming Experience", "Skills", "Fun"]}
+              typeSpeed={50}
+              backSpeed={40}
+              loop
+              className="inline-block text-indigo-400"
+            />
           </h1>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg text-white/80 max-w-lg mx-auto lg:mx-0">
             Book sessions, join tournaments, and explore the ultimate gaming arenas — all from one place.
