@@ -17,6 +17,11 @@ body {
   }
 }
 
+body {
+  font-family: 'Work Sans', sans-serif;
+}
+
+
 html{
   scroll-behavior: smooth;
   scroll-padding-top: 5rem; /* Adjust based on your navbar height */

@@ -11,6 +11,8 @@ import CategoryList from "./components/Category";
 import Gallery from "./components/Gallery";
 import FlowSection from "./components/Flow";
 import OfferStats from "./components/OfferStats";
+import { FaQ } from "react-icons/fa6";
+import FAQSection from "./components/FAQ";
 
 function App() {
   const gradients = [
@@ -133,6 +135,9 @@ function App() {
         </section>
         <section id="contact">
           <ContactSection />
+        </section>
+        <section id="FAQ">
+          <FAQSection/>
         </section>
         <section id="download">
           <DownloadAppSection />

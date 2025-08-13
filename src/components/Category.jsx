@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// src/components/CategoryList.jsx
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -8,11 +9,12 @@ import {
   FaTableTennis, FaBowlingBall, FaChild, FaRocket
 } from "react-icons/fa";
 
+// All Categories
 const categories = [
-  { name: "PS", icon: FaGamepad, desc: "PlayStation gaming sessions with the latest titles." },
-  { name: "PC", icon: FaDesktop, desc: "High-end PC setups for competitive and casual play." },
+  // { name: "PS", icon: FaGamepad, desc: "PlayStation gaming sessions with the latest titles." },
+  // { name: "PC", icon: FaDesktop, desc: "High-end PC setups for competitive and casual play." },
   { name: "VR", icon: FaVrCardboard, desc: "Immersive VR experiences and games." },
-  { name: "BOARD GAMES", icon: FaChessBoard, desc: "Classic and modern board games for all ages." },
+  // { name: "BOARD GAMES", icon: FaChessBoard, desc: "Classic and modern board games for all ages." },
   { name: "SOAP FOOTBALL", icon: FaFutbol, desc: "Fun and slippery soap football matches." },
   { name: "PRIVATE THEATRE", icon: FaFilm, desc: "Private screenings for movies and shows." },
   { name: "BLASTERS", icon: FaBomb, desc: "Foam blaster battles in exciting arenas." },
@@ -25,12 +27,32 @@ const categories = [
   { name: "TRAMPOLINE", icon: FaRocket, desc: "Bounce high in our trampoline park." },
 ];
 
+// Popular Categories (subset of above)
+const popularCategories = [
+  { name: "PS", icon: FaGamepad, desc: "PlayStation gaming sessions with the latest titles." },
+  { name: "PC", icon: FaDesktop, desc: "High-end PC setups for competitive and casual play." },
+  { name: "BOARD GAMES", icon: FaChessBoard, desc: "Classic and modern board games for all ages." },
+];
+
 export default function CategoryList() {
   const [selected, setSelected] = useState(null);
 
-  React.useEffect(() => {
-    AOS.init({ duration: 800 });
+  useEffect(() => {
+    AOS.init({ duration: 800, once: false });
   }, []);
+
+  const renderCategoryCard = ({ name, icon: Icon, desc }) => (
+    <button
+      key={name}
+      onClick={() => setSelected({ name, icon: Icon, desc })}
+      className="cursor-pointer bg-white/10 backdrop-blur-xl rounded-2xl px-4 py-6 sm:px-6 sm:py-8 transform transition duration-300 ease-in-out flex flex-col items-center justify-center space-y-3 hover:scale-105 hover:bg-white/20 focus:outline-none"
+    >
+      <Icon className="text-white" size={34} />
+      <span className="text-white text-sm sm:text-base font-semibold tracking-widest uppercase text-center">
+        {name}
+      </span>
+    </button>
+  );
 
   return (
     <section
@@ -59,23 +81,28 @@ export default function CategoryList() {
         </p>
       </div>
 
-      {/* Categories Grid */}
+      {/* Popular Games */}
+      <div className="w-full max-w-7xl mb-12">
+        <h4
+          data-aos="fade-up"
+          className="text-white text-xl sm:text-2xl font-bold mb-6 text-center"
+        >
+          Most Popular at ClutchX
+        </h4>
+        <div
+          className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8"
+          data-aos="fade-up"
+        >
+          {popularCategories.map(renderCategoryCard)}
+        </div>
+      </div>
+
+      {/* All Categories */}
       <div
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 w-full max-w-7xl"
         data-aos="fade-up"
       >
-        {categories.map(({ name, icon: Icon, desc }) => (
-          <button
-            key={name}
-            onClick={() => setSelected({ name, icon: Icon, desc })}
-            className="cursor-pointer bg-white/10 backdrop-blur-xl rounded-2xl px-4 py-6 sm:px-6 sm:py-8 transform transition duration-300 ease-in-out flex flex-col items-center justify-center space-y-3 hover:scale-105 hover:bg-white/20 focus:outline-none"
-          >
-            <Icon className="text-white" size={34} />
-            <span className="text-white text-sm sm:text-base font-semibold tracking-widest uppercase text-center">
-              {name}
-            </span>
-          </button>
-        ))}
+        {categories.map(renderCategoryCard)}
       </div>
 
       {/* Popup */}
@@ -106,7 +133,7 @@ export default function CategoryList() {
               }}
             >
               <div
-                className="glass-popup relative w-full max-w-md text-center border-2 border-white/25 rounded-2xl p-6"
+                className="relative w-full max-w-md text-center border-2 border-white/25 rounded-2xl p-6"
                 style={{
                   boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
                   backdropFilter: "blur(20px)",
@@ -133,7 +160,7 @@ export default function CategoryList() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold mb-3">{selected.name}</h3>
+                <h3 className="text-xl font-bold mb-3 text-white">{selected.name}</h3>
 
                 {/* Description */}
                 <p className="text-white/90 text-base">{selected.desc}</p>

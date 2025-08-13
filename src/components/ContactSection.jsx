@@ -37,20 +37,20 @@ export default function ContactWithMap() {
   };
 
   return (
-    <section id="contact" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-16 mt-0">
+    <section
+      id="contact"
+      className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-16 mt-0"
+    >
       {/* Section Title */}
-<div
-  className="text-center mb-12"
-  data-aos="fade-up"
->
-  <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">
-    Get in Touch
-  </h2>
-  <p className="text-gray-300 max-w-xl mx-auto text-sm sm:text-base">
-    We’re here to answer your questions, hear your feedback, and help you with anything you need.
-  </p>
-</div>
-
+      <div className="text-center mb-12" data-aos="fade-up">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">
+          Get in Touch
+        </h2>
+        <p className="text-white max-w-xl mx-auto text-sm sm:text-base opacity-80">
+          We’re here to answer your questions, hear your feedback, and help you
+          with anything you need.
+        </p>
+      </div>
 
       {/* Content Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
@@ -58,7 +58,8 @@ export default function ContactWithMap() {
         <form
           onSubmit={handleSubmit}
           data-aos="fade-right"
-          className="overflow-hidden rounded-3xl p-6 sm:p-8 flex flex-col gap-5 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg"
+          className="overflow-hidden rounded-3xl p-6 sm:p-8 flex flex-col gap-5 
+          bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg"
         >
           <input
             type="text"
@@ -67,7 +68,7 @@ export default function ContactWithMap() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="bg-transparent border border-white/30 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 transition text-sm"
+            className="bg-transparent border border-white/40 rounded-lg px-4 py-2 text-white placeholder-white focus:outline-none focus:border-cyan-400 transition text-sm"
           />
           <input
             type="email"
@@ -76,7 +77,7 @@ export default function ContactWithMap() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="bg-transparent border border-white/30 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 transition text-sm"
+            className="bg-transparent border border-white/40 rounded-lg px-4 py-2 text-white placeholder-white focus:outline-none focus:border-cyan-400 transition text-sm"
           />
           <input
             type="text"
@@ -84,7 +85,7 @@ export default function ContactWithMap() {
             placeholder="Subject"
             value={formData.subject}
             onChange={handleChange}
-            className="bg-transparent border border-white/30 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 transition text-sm"
+            className="bg-transparent border border-white/40 rounded-lg px-4 py-2 text-white placeholder-white focus:outline-none focus:border-cyan-400 transition text-sm"
           />
           <textarea
             name="message"
@@ -93,18 +94,24 @@ export default function ContactWithMap() {
             value={formData.message}
             onChange={handleChange}
             required
-            className="bg-transparent border border-white/30 rounded-lg px-4 py-2 text-white placeholder-gray-400 resize-none focus:outline-none focus:border-cyan-400 transition text-sm"
+            className="bg-transparent border border-white/40 rounded-lg px-4 py-2 text-white placeholder-white resize-none focus:outline-none focus:border-cyan-400 transition text-sm"
           />
 
           <button
-            type="submit"
-            className="self-start bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 px-6 py-2 rounded-full font-semibold shadow-md hover:brightness-110 transition text-sm"
-          >
-            Send Message
-          </button>
+  type="submit"
+  className="self-center bg-white/20 backdrop-blur-lg border border-white/40 px-6 py-2 rounded-full font-semibold shadow-md hover:bg-white/40 hover:text-black transition text-sm text-white"
+>
+  Send Message
+</button>
+
+
 
           {statusMsg && (
-            <p className={`mt-2 text-sm ${error ? "text-rose-400" : "text-green-400"}`}>
+            <p
+              className={`mt-2 text-sm ${
+                error ? "text-rose-300" : "text-green-300"
+              }`}
+            >
               {statusMsg}
             </p>
           )}
@@ -113,17 +120,17 @@ export default function ContactWithMap() {
         {/* Map Container */}
         <div
           data-aos="fade-left"
-          className="p-6 rounded-3xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg flex flex-col"
+          className="p-6 rounded-3xl bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg flex flex-col"
         >
           <div className="flex items-center gap-2 mb-4">
-            <MapPin className="text-cyan-400" size={24} />
+            <MapPin className="text-cyan-300" size={24} />
             <h3 className="text-xl font-semibold text-white">Our Location</h3>
           </div>
 
-          <div className="flex-grow rounded-xl overflow-hidden border border-white/20 shadow-md">
+          <div className="flex-grow rounded-xl overflow-hidden border border-white/30 shadow-md">
             <iframe
               title="Company Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086137362151!2d-122.41941568468159!3d37.774929779759315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809cda1f9fbd%3A0xd92b031858f342f6!2sSan%20Francisco%20Gaming%20Cafe!5e0!3m2!1sen!2sus!4v1691661612345!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.4984122747886!2d80.23962207480528!3d13.067439787263604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265f3dca1f4a3%3A0x5e2d8c7d5f79a74e!2sPhoenix%20Marketcity%20Chennai!5e0!3m2!1sen!2sin!4v1691661612345!5m2!1sen!2sin"
               width="100%"
               height="300"
               style={{ border: 0 }}
@@ -133,8 +140,8 @@ export default function ContactWithMap() {
             />
           </div>
 
-          <p className="mt-4 text-gray-300 text-sm leading-relaxed">
-            123 Gaming St, San Francisco, CA 94103
+          <p className="mt-4 text-white text-sm leading-relaxed opacity-80">
+            123 Gaming St, Chennai, India
           </p>
         </div>
       </div>
