@@ -10,6 +10,7 @@ import ContactSection from "./components/ContactSection";
 import CategoryList from "./components/Category";
 import Gallery from "./components/Gallery";
 import FlowSection from "./components/Flow";
+import OfferStats from "./components/OfferStats";
 
 function App() {
   const gradients = [
@@ -116,6 +117,9 @@ function App() {
         </section>
         <section id="features">
           <FlowSection />
+        </section>
+        <section id="stats">
+          <OfferStats/>
         </section>
         <section id="categories">
           <CategoryList />

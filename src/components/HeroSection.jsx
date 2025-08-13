@@ -31,10 +31,10 @@ export default function HeroSection() {
             Level Up Your{" "}
             <ReactTyped
               strings={["Gaming Experience", "Skills", "Fun"]}
-              typeSpeed={50}
-              backSpeed={40}
+              typeSpeed={100}
+              backSpeed={90}
               loop
-              className="inline-block text-indigo-400"
+              className="inline-block text-white-400"
             />
           </h1>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg text-white/80 max-w-lg mx-auto lg:mx-0">
