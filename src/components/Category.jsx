@@ -11,10 +11,10 @@ import {
 
 // All Categories
 const categories = [
-  // { name: "PS", icon: FaGamepad, desc: "PlayStation gaming sessions with the latest titles." },
-  // { name: "PC", icon: FaDesktop, desc: "High-end PC setups for competitive and casual play." },
+  { name: "PS", icon: FaGamepad, desc: "PlayStation gaming sessions with the latest titles." },
+  { name: "PC", icon: FaDesktop, desc: "High-end PC setups for competitive and casual play." },
   { name: "VR", icon: FaVrCardboard, desc: "Immersive VR experiences and games." },
-  // { name: "BOARD GAMES", icon: FaChessBoard, desc: "Classic and modern board games for all ages." },
+  { name: "BOARD GAMES", icon: FaChessBoard, desc: "Classic and modern board games for all ages." },
   { name: "SOAP FOOTBALL", icon: FaFutbol, desc: "Fun and slippery soap football matches." },
   { name: "PRIVATE THEATRE", icon: FaFilm, desc: "Private screenings for movies and shows." },
   { name: "BLASTERS", icon: FaBomb, desc: "Foam blaster battles in exciting arenas." },
@@ -27,12 +27,6 @@ const categories = [
   { name: "TRAMPOLINE", icon: FaRocket, desc: "Bounce high in our trampoline park." },
 ];
 
-// Popular Categories (subset of above)
-const popularCategories = [
-  { name: "PS", icon: FaGamepad, desc: "PlayStation gaming sessions with the latest titles." },
-  { name: "PC", icon: FaDesktop, desc: "High-end PC setups for competitive and casual play." },
-  { name: "BOARD GAMES", icon: FaChessBoard, desc: "Classic and modern board games for all ages." },
-];
 
 export default function CategoryList() {
   const [selected, setSelected] = useState(null);
@@ -81,21 +75,7 @@ export default function CategoryList() {
         </p>
       </div>
 
-      {/* Popular Games */}
-      <div className="w-full max-w-7xl mb-12">
-        <h4
-          data-aos="fade-up"
-          className="text-white text-xl sm:text-2xl font-bold mb-6 text-center"
-        >
-          Most Popular at ClutchX
-        </h4>
-        <div
-          className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8"
-          data-aos="fade-up"
-        >
-          {popularCategories.map(renderCategoryCard)}
-        </div>
-      </div>
+  
 
       {/* All Categories */}
       <div

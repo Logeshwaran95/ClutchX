@@ -16,12 +16,13 @@ import FAQSection from "./components/FAQ";
 
 function App() {
   const gradients = [
-  {
-    id: "dark",
-    from: "from-gray-900",
-    via: "via-gray-800",
-    to: "to-black",
-  },
+
+{
+  id: "dark-carbon",
+  from: "from-neutral-950",
+  via: "via-gray-950",
+  to: "to-black",
+},
   {
     id: "pink",
     from: "from-pink-600",

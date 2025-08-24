@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { ArrowRight } from "lucide-react";
+import Swal from "sweetalert2";
 
 const steps = [
   {
@@ -25,11 +26,29 @@ const steps = [
 ];
 
 export default function FlowSection() {
+  const stepRefs = useRef([]);
+
   useEffect(() => {
-    AOS.init({
-      duration: 800
-    });
+    AOS.init({ duration: 800 });
   }, []);
+
+  const scrollToStep = (index) => {
+    if (stepRefs.current[index]) {
+      stepRefs.current[index].scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  const handleFinish = () => {
+    Swal.fire({
+      title: "🎉 ClutchX",
+      text: "You’re all set! Thanks for completing the flow with ClutchX 🚀",
+      icon: "success",
+      confirmButtonText: "Awesome!",
+    });
+  };
 
   return (
     <section className="relative py-16 sm:py-20 bg-transparent">
@@ -37,6 +56,7 @@ export default function FlowSection() {
         {steps.map((step, idx) => (
           <div
             key={idx}
+            ref={(el) => (stepRefs.current[idx] = el)} // assign ref
             className={`flex flex-col md:flex-row items-center gap-10 ${
               idx % 2 !== 0 ? "md:flex-row-reverse" : ""
             }`}
@@ -71,10 +91,23 @@ export default function FlowSection() {
               <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-6">
                 {step.description}
               </p>
-              <button className="inline-flex items-center gap-2 px-5 py-3 bg-white/10 backdrop-blur-md border border-white/30 text-white font-semibold rounded-full shadow-lg hover:bg-white/20 transition">
-                Next Step
-                <ArrowRight className="w-5 h-5" />
-              </button>
+
+              {idx < steps.length - 1 ? (
+                <button
+                  onClick={() => scrollToStep(idx + 1)}
+                  className="inline-flex items-center gap-2 px-5 py-3 bg-white/10 backdrop-blur-md border border-white/30 text-white font-semibold rounded-full shadow-lg hover:bg-white/20 transition"
+                >
+                  Next Step
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              ) : (
+                <button
+                  onClick={handleFinish}
+                  className="inline-flex items-center gap-2 px-5 py-3 bg-white/10 backdrop-blur-md border border-white/30 text-white font-semibold rounded-full shadow-lg hover:bg-white/20 transition"
+                >
+                  Finish
+                </button>
+              )}
             </div>
           </div>
         ))}

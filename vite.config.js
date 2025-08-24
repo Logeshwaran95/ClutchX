@@ -8,6 +8,12 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss()],
+
+  optimizeDeps: {
+    include: ['@emailjs/browser'],
+  exclude: ["lucide-react/dist/esm/icons/chrome.js"]
+  },
+  
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

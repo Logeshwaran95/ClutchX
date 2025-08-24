@@ -1,18 +1,18 @@
-// src/components/ContactWithMap.jsx
+// src/components/EarlyAccessWithMap.jsx
 import React, { useState, useEffect } from "react";
 import { MapPin } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
-export default function ContactWithMap() {
+export default function EarlyAccessWithMap() {
   const [formData, setFormData] = useState({
     name: "",
+    age: "",
+    phone: "",
     email: "",
-    subject: "",
-    message: "",
   });
-  const [statusMsg, setStatusMsg] = useState("");
-  const [error, setError] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 800 });
@@ -20,41 +20,72 @@ export default function ContactWithMap() {
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    setStatusMsg("");
-    setError(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      setError(true);
-      setStatusMsg("Please fill in all required fields.");
+
+    // Check for empty fields
+    if (!formData.name || !formData.age || !formData.phone || !formData.email) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops...",
+        text: "Please fill in all required fields!",
+      });
       return;
     }
-    setError(false);
-    setStatusMsg("Your message will be received here. Thank you!");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+
+    // Send email via EmailJS
+    emailjs
+      .send(
+        "service_zt426d4",
+        "template_ec9w29i",
+        {
+          name: formData.name,
+          age: formData.age,
+          phone: formData.phone,
+          email: formData.email,
+        },
+        "XymN87JECTZ1vN0vg"
+      )
+      .then(
+        (response) => {
+          Swal.fire({
+            icon: "success",
+            title: "Success!",
+            text: "You’re on the Early Access list! 🚀",
+          });
+          setFormData({ name: "", age: "", phone: "", email: "" });
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        (err) => {
+          Swal.fire({
+            icon: "error",
+            title: "Error!",
+            text: "Something went wrong. Please try again.",
+          });
+          console.error("FAILED...", err);
+        }
+      );
   };
 
   return (
     <section
-      id="contact"
+      id="early-access"
       className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-16 mt-0"
     >
       {/* Section Title */}
       <div className="text-center mb-12" data-aos="fade-up">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">
-          Get in Touch
+          Get Early Access 🚀
         </h2>
         <p className="text-white max-w-xl mx-auto text-sm sm:text-base opacity-80">
-          We’re here to answer your questions, hear your feedback, and help you
-          with anything you need.
+          Be the first to try ClutchX. Sign up now for exclusive early access.
         </p>
       </div>
 
-      {/* Content Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
-        {/* Contact Form */}
+        {/* Early Access Form */}
         <form
           onSubmit={handleSubmit}
           data-aos="fade-right"
@@ -64,8 +95,26 @@ export default function ContactWithMap() {
           <input
             type="text"
             name="name"
-            placeholder="Your Name"
+            placeholder="Full Name"
             value={formData.name}
+            onChange={handleChange}
+            required
+            className="bg-transparent border border-white/40 rounded-lg px-4 py-2 text-white placeholder-white focus:outline-none focus:border-cyan-400 transition text-sm"
+          />
+          <input
+            type="number"
+            name="age"
+            placeholder="Age"
+            value={formData.age}
+            onChange={handleChange}
+            required
+            className="bg-transparent border border-white/40 rounded-lg px-4 py-2 text-white placeholder-white focus:outline-none focus:border-cyan-400 transition text-sm"
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.phone}
             onChange={handleChange}
             required
             className="bg-transparent border border-white/40 rounded-lg px-4 py-2 text-white placeholder-white focus:outline-none focus:border-cyan-400 transition text-sm"
@@ -73,48 +122,19 @@ export default function ContactWithMap() {
           <input
             type="email"
             name="email"
-            placeholder="Your Email"
+            placeholder="Email Address"
             value={formData.email}
             onChange={handleChange}
             required
             className="bg-transparent border border-white/40 rounded-lg px-4 py-2 text-white placeholder-white focus:outline-none focus:border-cyan-400 transition text-sm"
           />
-          <input
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            value={formData.subject}
-            onChange={handleChange}
-            className="bg-transparent border border-white/40 rounded-lg px-4 py-2 text-white placeholder-white focus:outline-none focus:border-cyan-400 transition text-sm"
-          />
-          <textarea
-            name="message"
-            rows="3"
-            placeholder="Your Message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            className="bg-transparent border border-white/40 rounded-lg px-4 py-2 text-white placeholder-white resize-none focus:outline-none focus:border-cyan-400 transition text-sm"
-          />
 
           <button
-  type="submit"
-  className="self-center bg-white/20 backdrop-blur-lg border border-white/40 px-6 py-2 rounded-full font-semibold shadow-md hover:bg-white/40 hover:text-black transition text-sm text-white"
->
-  Send Message
-</button>
-
-
-
-          {statusMsg && (
-            <p
-              className={`mt-2 text-sm ${
-                error ? "text-rose-300" : "text-green-300"
-              }`}
-            >
-              {statusMsg}
-            </p>
-          )}
+            type="submit"
+            className="self-center bg-white/20 backdrop-blur-lg border border-white/40 px-6 py-2 rounded-full font-semibold shadow-md hover:bg-white/40 hover:text-black transition text-sm text-white"
+          >
+            Get Early Access
+          </button>
         </form>
 
         {/* Map Container */}

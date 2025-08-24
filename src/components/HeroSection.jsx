@@ -41,12 +41,12 @@ export default function HeroSection() {
             Book sessions, join tournaments, and explore the ultimate gaming arenas — all from one place.
           </p>
           <motion.a
-            href="#download"
+            href="#contact"
             className="mt-8 inline-block bg-white/10 backdrop-blur-md border border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold text-white hover:bg-white/20 transition"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get Started
+            Get Early Access
           </motion.a>
         </motion.div>
 
