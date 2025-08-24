@@ -69,7 +69,7 @@ export default function EarlyAccessWithMap() {
       );
   };
 
-  return (
+return (
     <section
       id="early-access"
       className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-16 mt-0"
@@ -135,6 +135,11 @@ export default function EarlyAccessWithMap() {
           >
             Get Early Access
           </button>
+
+          {/* Promotional line below button */}
+          <p className="self-center mt-2 text-sm text-white-400 font-medium text-center">
+            🚀 Obtain Early Access and get up to 25% discount!
+          </p>
         </form>
 
         {/* Map Container */}

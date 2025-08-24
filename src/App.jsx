@@ -82,12 +82,14 @@ function App() {
 ];
 
 
-  const [theme, setTheme] = useState(gradients[0]);
+  const [theme, setTheme] = useState(gradients[2]);
 
   useEffect(() => {
-    const savedColor = localStorage.getItem("selectedColor") || "#000";
-    document.documentElement.style.backgroundColor = savedColor;
-    document.body.style.backgroundColor = savedColor;
+   const savedColor = localStorage.getItem("selectedColor");
+    if (savedColor) {
+      document.documentElement.style.backgroundColor = savedColor;
+      document.body.style.backgroundColor = savedColor;
+    }
   }, []);
 
   useEffect(() => {
