@@ -3,22 +3,22 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 // Import all images explicitly
-import ps1 from "../assets/images/PS 1.jpg";
-import ps2 from "../assets/images/PS 2.jpg";
-import pc1 from "../assets/images/PC 1.jpg";
-import vr1 from "../assets/images/VR 1.jpg";
-import board1 from "../assets/images/BOARD GAMES 1.jpg";
-import board2 from "../assets/images/BOARD GAMES 2.jpg";
-import soap1 from "../assets/images/SOAP FOOTBALL 2.jpg";
-import private1 from "../assets/images/PRIVATE_THEATRE.jpg";
-import blasters1 from "../assets/images/BLASTERS 1.jpg";
-import paintball1 from "../assets/images/PAINT BALL 1.jpg";
-import laser1 from "../assets/images/LASER TAG 1.jpg";
-import escape1 from "../assets/images/ESCAPE ROOMS 1.jpg";
+import ps1 from "../assets/images/PS-1.jpg";
+import ps2 from "../assets/images/PS-2.jpg";
+import pc1 from "../assets/images/PC-1.jpg";
+import vr1 from "../assets/images/VR-1.jpg";
+import board1 from "../assets/images/BOARD-GAMES-1.jpg";
+import board2 from "../assets/images/BOARD-GAMES-2.jpg";
+import soap1 from "../assets/images/SOAP-FOOTBALL-2.jpg";
+import private1 from "../assets/images/PRIVATE-THEATRE.jpg";
+import blasters1 from "../assets/images/BLASTERS-1.jpg";
+import paintball1 from "../assets/images/PAINT-BALL-1.jpg";
+import laser1 from "../assets/images/LASER-TAG-1.jpg";
+import escape1 from "../assets/images/ESCAPE-ROOMS-1.jpg";
 import snooker1 from "../assets/images/SNOOKERS.jpg";
-import bowling1 from "../assets/images/BOWLING 1.jpg";
-import kids1 from "../assets/images/KIDS 1.jpg";
-import trampoline1 from "../assets/images/TRAMPOLINE 1.jpg";
+import bowling1 from "../assets/images/BOWLING-1.jpg";
+import kids1 from "../assets/images/KIDS-1.jpg";
+import trampoline1 from "../assets/images/TRAMPOLINE.jpg";
 
 // Map images to gallery
 const galleryImages = [
