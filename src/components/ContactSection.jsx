@@ -25,7 +25,6 @@ export default function EarlyAccessWithMap() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check for empty fields
     if (!formData.name || !formData.age || !formData.phone || !formData.email) {
       Swal.fire({
         icon: "warning",
@@ -35,17 +34,11 @@ export default function EarlyAccessWithMap() {
       return;
     }
 
-    // Send email via EmailJS
     emailjs
       .send(
         "service_zt426d4",
         "template_ec9w29i",
-        {
-          name: formData.name,
-          age: formData.age,
-          phone: formData.phone,
-          email: formData.email,
-        },
+        { ...formData },
         "XymN87JECTZ1vN0vg"
       )
       .then(
@@ -69,11 +62,8 @@ export default function EarlyAccessWithMap() {
       );
   };
 
-return (
-    <section
-      id="early-access"
-      className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-16 mt-0"
-    >
+  return (
+    <section id="early-access" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
       {/* Section Title */}
       <div className="text-center mb-12" data-aos="fade-up">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">
@@ -90,7 +80,7 @@ return (
           onSubmit={handleSubmit}
           data-aos="fade-right"
           className="overflow-hidden rounded-3xl p-6 sm:p-8 flex flex-col gap-5 
-          bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg"
+          bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg max-h-[500px]"
         >
           <input
             type="text"
@@ -136,7 +126,6 @@ return (
             Get Early Access
           </button>
 
-          {/* Promotional line below button */}
           <p className="self-center mt-2 text-sm text-white-400 font-medium text-center">
             🚀 Obtain Early Access and get up to 25% discount!
           </p>
@@ -145,28 +134,25 @@ return (
         {/* Map Container */}
         <div
           data-aos="fade-left"
-          className="p-6 rounded-3xl bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg flex flex-col"
+          className="p-6 rounded-3xl bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg flex flex-col max-h-[500px]"
         >
           <div className="flex items-center gap-2 mb-4">
             <MapPin className="text-cyan-300" size={24} />
             <h3 className="text-xl font-semibold text-white">Our Location</h3>
           </div>
 
-          <div className="flex-grow rounded-xl overflow-hidden border border-white/30 shadow-md">
+          <div className="rounded-xl overflow-hidden border border-white/30 shadow-md flex-1">
             <iframe
-              title="Company Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.4984122747886!2d80.23962207480528!3d13.067439787263604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265f3dca1f4a3%3A0x5e2d8c7d5f79a74e!2sPhoenix%20Marketcity%20Chennai!5e0!3m2!1sen!2sin!4v1691661612345!5m2!1sen!2sin"
-              width="100%"
-              height="300"
-              style={{ border: 0 }}
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5465019406697!2d80.206761!3d13.000831999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267432669a727%3A0xe8a38bd99924b53!2sRs%2C%2022-38%2C%20Parutthivakam%20St%2C%20Ramapuram%2C%20Mosque%20Colony%2C%20Alandur%2C%20Chennai%2C%20Tamil%20Nadu%20600016!5e0!3m2!1sen!2sin!4v1756143006222!5m2!1sen!2sin"
+              className="w-full h-full border-0"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-            />
+            ></iframe>
           </div>
 
           <p className="mt-4 text-white text-sm leading-relaxed opacity-80">
-            123 Gaming St, Chennai, India
+            ClutchX, Chennai, India
           </p>
         </div>
       </div>

@@ -5,11 +5,11 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube, FaWhatsap
 export default function Footer() {
   const socialLinks = [
     { icon: <FaFacebookF />, href: "https://www.facebook.com/share/19TCu3sJyq/?mibextid=wwXIfr" },
-    { icon: <FaTwitter />, href: "https://twitter.com" },
+    { icon: <FaTwitter />, href: "https://x.com/Clutchxofficial" },
     { icon: <FaInstagram />, href: "https://www.instagram.com/clutchx_official/" },
     { icon: <FaLinkedinIn />, href: "https://www.linkedin.com/company/clutchx/" },
-    { icon: <FaYoutube />, href: "https://youtube.com" },
-    { icon: <FaWhatsapp />, href: "https://wa.me/9363799363" }, // ✅ WhatsApp Link
+    { icon: <FaYoutube />, href: "https://www.youtube.com/@ClutchX_official" },
+    { icon: <FaWhatsapp />, href: "https://wa.me/9363799363" }, 
   ];
 
   const usefulLinks = [
@@ -97,7 +97,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom copyright */}
-      <div className="text-center text-gray-400 text-sm py-4">
+      <div className="text-center text-white-400 text-sm py-4">
         © {new Date().getFullYear()} ClutchX. All rights reserved.
       </div>
     </footer>

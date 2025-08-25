@@ -50,18 +50,6 @@ function App() {
     to: "to-lime-400",
   },
   {
-    id: "orange-sunset",
-    from: "from-orange-700",
-    via: "via-red-500",
-    to: "to-yellow-400",
-  },
-  {
-    id: "violet-fuchsia",
-    from: "from-violet-800",
-    via: "via-fuchsia-600",
-    to: "to-pink-400",
-  },
-  {
     id: "teal-aqua",
     from: "from-teal-700",
     via: "via-cyan-500",
@@ -74,15 +62,21 @@ function App() {
     to: "to-rose-300",
   },
   {
-    id: "red-rose",
-    from: "from-red-700",
-    via: "via-pink-500",
-    to: "to-rose-400",
+    id: "dark-purple-indigo-black",
+    from: "from-purple-900",
+    via: "via-indigo-900",
+    to: "to-black",
   },
+   {
+    id: "neon-cyber",
+    from: "from-purple-900",
+    via: "via-pink-600",
+    to: "to-indigo-700",
+  }
 ];
 
 
-  const [theme, setTheme] = useState(gradients[2]);
+  const [theme, setTheme] = useState(gradients[7]);
 
   useEffect(() => {
    const savedColor = localStorage.getItem("selectedColor");
