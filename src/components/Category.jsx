@@ -1,15 +1,28 @@
-// src/components/CategoryList.jsx
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import {
-  FaGamepad, FaDesktop, FaVrCardboard, FaChessBoard, FaFutbol,
-  FaFilm, FaBomb, FaPaintBrush, FaCrosshairs, FaDoorOpen,
-  FaTableTennis, FaBowlingBall, FaChild, FaRocket
+  FaGamepad,
+  FaDesktop,
+  FaVrCardboard,
+  FaChessBoard,
+  FaFutbol,
+  FaFilm,
+  FaCrosshairs, // for Blasters & Paintball
+  FaPaintRoller, // optional for Paintball effect
+  FaDoorOpen,
+   // hypothetical, or FaTableTennis fallback
+   FaTableTennis,
+  FaBowlingBall,
+  FaChild,
+  FaArrowUp,
+  FaGolfBall,
+  FaBaseballBall, // for Trampoline jumping
 } from "react-icons/fa";
+import { FaBaseball, FaGun, FaTableTennisPaddleBall } from "react-icons/fa6";
 
-// All Categories
+// Updated Categories with proper icons
 const categories = [
   { name: "PS", icon: FaGamepad, desc: "PlayStation gaming sessions with the latest titles." },
   { name: "PC", icon: FaDesktop, desc: "High-end PC setups for competitive and casual play." },
@@ -17,14 +30,14 @@ const categories = [
   { name: "BOARD GAMES", icon: FaChessBoard, desc: "Classic and modern board games for all ages." },
   { name: "SOAP FOOTBALL", icon: FaFutbol, desc: "Fun and slippery soap football matches." },
   { name: "PRIVATE THEATRE", icon: FaFilm, desc: "Private screenings for movies and shows." },
-  { name: "BLASTERS", icon: FaBomb, desc: "Foam blaster battles in exciting arenas." },
-  { name: "PAINTBALL", icon: FaPaintBrush, desc: "Thrilling paintball matches with safety gear." },
+  { name: "BLASTERS", icon: FaGun, desc: "Foam blaster battles in exciting arenas." },
+  { name: "PAINTBALL", icon: FaGun, desc: "Thrilling paintball matches with safety gear." },
   { name: "LASER TAG", icon: FaCrosshairs, desc: "Fast-paced laser tag battles with friends." },
   { name: "ESCAPE ROOMS", icon: FaDoorOpen, desc: "Test your wits in themed escape rooms." },
-  { name: "SNOOKERS", icon: FaTableTennis, desc: "Enjoy a relaxing snooker or billiards game." },
+  { name: "SNOOKERS", icon: FaBaseballBall, desc: "Enjoy a relaxing snooker or billiards game." },
   { name: "BOWLING", icon: FaBowlingBall, desc: "Hit strikes in our glowing bowling alley." },
   { name: "KIDS", icon: FaChild, desc: "Safe and fun play areas for children." },
-  { name: "TRAMPOLINE", icon: FaRocket, desc: "Bounce high in our trampoline park." },
+  { name: "TRAMPOLINE", icon: FaArrowUp, desc: "Bounce high in our trampoline park." },
 ];
 
 

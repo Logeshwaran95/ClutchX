@@ -2,6 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import {ReactTyped} from "react-typed";
 
+import img from "../assets/images/hero.jpg";
+
+
 export default function HeroSection() {
   return (
     <section
@@ -66,7 +69,7 @@ export default function HeroSection() {
         >
           <div className="relative w-64 h-48 sm:w-72 sm:h-56 lg:w-[420px] lg:h-[300px] rounded-xl overflow-hidden backdrop-blur-md border border-white/20 shadow-lg hover:scale-105 transition duration-300 ease-in-out">
             <img
-              src="https://imgcdn.stablediffusionweb.com/2025/2/5/5896d3fa-ceeb-40e7-a4c9-000aabd291af.jpg"
+              src={img}
               alt="ClutchX Gaming Arena"
               className="w-full h-full object-cover rounded-xl"
               loading="lazy"

@@ -3,21 +3,25 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ArrowRight } from "lucide-react";
 
+import flow_1 from "../assets/images/flow_1.jpg";
+import flow_2 from "../assets/images/flow_2.jpg";
+import flow_3 from "../assets/images/flow_3.jpg";
+
 const steps = [
   {
     title: "Book Your Spot",
     description: "Choose your favorite gaming venue and lock your time slot instantly.",
-    img: "https://images.unsplash.com/photo-1605902711622-cfb43c44342f?auto=format&fit=crop&w=1000&q=80",
+    img: flow_1,
   },
   {
     title: "Connect with Players",
     description: "Find teammates or challenge opponents for the ultimate gaming experience.",
-    img: "https://images.unsplash.com/photo-1611926080300-1d74a22bcf8d?auto=format&fit=crop&w=1000&q=80",
+    img: flow_2,
   },
   {
     title: "Let’s Go!",
     description: "Step into your game zone and enjoy a fully immersive experience.",
-    img: "https://images.unsplash.com/photo-1587202372775-6a2b7b3b4b2f?auto=format&fit=crop&w=1000&q=80",
+    img: flow_3,
   },
 ];
 
